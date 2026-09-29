@@ -7,7 +7,9 @@ authors = [
     { name = "hayfa", email = "hayufa123123@gmail.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "pandas>=3.0.6",
+]
 
 [project.scripts]
 titanic-project = "titanic_project:main"
