@@ -15,6 +15,13 @@ def build_parser():
     parser.add_argument("--model-output", required=True)
     parser.add_argument("--eval-output", required=True)
 
+    parser.add_argument(
+        "--model-type",
+        choices=["logistic", "random_forest"],
+        default="logistic",
+        help="Choose the machine learning model",
+    )
+
     return parser
 
 
@@ -37,8 +44,8 @@ def main():
         stratify=y,
     )
 
-    # Create and train the model
-    pipeline = create_model_pipeline()
+    # Create and train the selected model
+    pipeline = create_model_pipeline(args.model_type)
     pipeline.fit(X_train, y_train)
 
     # Save the trained model
@@ -50,6 +57,7 @@ def main():
     eval_df["Survived"] = y_test.values
     eval_df.to_csv(args.eval_output, index=False)
 
+    print(f"Model used: {args.model_type}")
     print(f"Saved model to {args.model_output}")
     print(f"Saved evaluation data to {args.eval_output}")
 
