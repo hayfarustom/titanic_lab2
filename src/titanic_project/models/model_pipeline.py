@@ -8,6 +8,7 @@ from sklearn.preprocessing import (
 
 from .logistic_regression_model import LogisticRegressionModel
 from .random_forest_model import RandomForestModel
+from .xgboost_model import XGBoostModel
 
 
 def create_model_pipeline(model_type="logistic"):
@@ -55,6 +56,9 @@ def create_model_pipeline(model_type="logistic"):
 
     elif model_type == "random_forest":
         model = RandomForestModel()
+
+    elif model_type == "xgboost":
+        model = XGBoostModel()
 
     else:
         raise ValueError(

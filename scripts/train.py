@@ -17,7 +17,7 @@ def build_parser():
 
     parser.add_argument(
         "--model-type",
-        choices=["logistic", "random_forest"],
+        choices=["logistic", "random_forest", "xgboost"],
         default="logistic",
         help="Choose the machine learning model",
     )
