@@ -1,0 +1,12 @@
+3- Using the classes
+
+5- I think there are still some things we can improve in our project.
+First, we can try changing the parameters of the models to see if we can get better accuracy, especially for Random Forest and XGBoost.
+We can also use cross-validation to make sure our results are reliable and not based on only one train-test split.
+Another improvement would be to compare the models using more than just accuracy, like precision, recall, and F1-score.
+We can also add more tests to make sure our preprocessing, feature engineering, and models are working correctly.
+For the results, we got:
+- Logistic Regression: 83.80%
+- Random Forest: 80.45%
+- XGBoost: 81.01%
+From these results, Logistic Regression performed the best, but I think we can still improve the other models by trying different settings.
