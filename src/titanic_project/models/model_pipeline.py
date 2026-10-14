@@ -7,9 +7,10 @@ from sklearn.preprocessing import (
 )
 
 from .logistic_regression_model import LogisticRegressionModel
+from .random_forest_model import RandomForestModel
 
 
-def create_model_pipeline():
+def create_model_pipeline(model_type="logistic"):
     numeric_features = ["Age", "Fare"]
 
     onehot_features = [
@@ -21,6 +22,7 @@ def create_model_pipeline():
 
     ordinal_features = ["Sex"]
 
+    # Data preprocessing
     preprocessor = ColumnTransformer(
         transformers=[
             (
@@ -47,8 +49,19 @@ def create_model_pipeline():
         ]
     )
 
-    model = LogisticRegressionModel()
+    # Choose the machine learning model
+    if model_type == "logistic":
+        model = LogisticRegressionModel()
 
+    elif model_type == "random_forest":
+        model = RandomForestModel()
+
+    else:
+        raise ValueError(
+            f"Unknown model type: {model_type}"
+        )
+
+    # Build the pipeline
     pipeline = Pipeline(
         steps=[
             ("preprocessor", preprocessor),
